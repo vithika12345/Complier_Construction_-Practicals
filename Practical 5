@@ -1,0 +1,21 @@
+%{
+// Vithika Saoji C2 24070521195
+#include <stdio.h>
+%}
+
+%%
+[A-Z]   { printf("%c", yytext[0] - 'A' + 'a'); }
+[a-z]   { printf("%c", yytext[0] - 'a' + 'A'); }
+\n      { printf("\n"); }
+.       { printf("%c", yytext[0]); }
+%%
+
+int yywrap() {
+    return 1;
+}
+
+int main() {
+    printf("Enter text:\n");
+    yylex();
+    return 0;
+}
